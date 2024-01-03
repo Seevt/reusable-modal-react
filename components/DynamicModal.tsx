@@ -2,15 +2,14 @@ import { createPortal } from "react-dom";
 import { CSSProperties, ReactNode } from "react";
 import type { ModalController } from "../custom hooks/useModalController";
 
-type Node = {
+type Props = {
+  controller: ModalController;
+  portalTo: Element | DocumentFragment;
   children?: ReactNode;
   closeOnBg?: boolean;
-  className?: string;
   defaultPosition?: boolean;
   styling?: CSSProperties;
 };
-
-type Props = Node & ModalController;
 
 function DynamicModal({
   controller,
@@ -53,7 +52,6 @@ function DynamicModal({
         style={{
           ...__modal_outer_background,
         }}
-        className={`${className} `}
       >
         {children}
         </div>,
