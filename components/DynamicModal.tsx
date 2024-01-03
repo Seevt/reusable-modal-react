@@ -7,6 +7,7 @@ type Node = {
   closeOnBg?: boolean;
   className?: string;
   defaultPosition?: boolean;
+  styling?: CSSProperties;
 };
 
 type Props = Node & ModalController;
@@ -15,6 +16,7 @@ function DynamicModal({
   controller,
   portalTo,
   children,
+  styling,
   closeOnBg,
   className,
   defaultPosition,
@@ -37,6 +39,8 @@ function DynamicModal({
     placeItems: defaultPosition ? "center" : "",
 
     transition: "opacity 0.25s ease, visibility 0.25s ease",
+
+    ...styling,
   };
 
   return (
