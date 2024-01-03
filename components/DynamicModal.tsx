@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { CSSProperties, ReactNode } from "react";
 import type { ModalController } from "../custom hooks/useModalController";
 
@@ -12,6 +13,7 @@ type Props = Node & ModalController;
 
 function DynamicModal({
   controller,
+  portalTo,
   children,
   closeOnBg,
   className,
@@ -39,6 +41,7 @@ function DynamicModal({
 
   return (
     <>
+      {createPortal(
       <div
         onClick={
           closeOnBg ? (e) => controller?.closeOnBackground(e) : () => null
@@ -49,7 +52,9 @@ function DynamicModal({
         className={`${className} `}
       >
         {children}
-      </div>
+        </div>,
+        portalTo
+      )}
     </>
   );
 }
