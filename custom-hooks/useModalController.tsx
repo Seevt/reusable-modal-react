@@ -1,8 +1,6 @@
 import { useState, MouseEvent } from "react";
 
-export type ModalController = {
-  controller: ReturnType<typeof useModalController>;
-};
+export type ModalController = ReturnType<typeof useModalController>;
 
 export const useModalController = () => {
   const [show, setShow] = useState(false);
