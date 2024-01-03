@@ -47,7 +47,7 @@ function DynamicModal({
       {createPortal(
       <div
         onClick={
-          closeOnBg ? (e) => controller?.closeOnBackground(e) : () => null
+            closeOnBg ? (e) => controller.closeOnBackground(e) : () => null
         }
         style={{
           ...__modal_outer_background,
