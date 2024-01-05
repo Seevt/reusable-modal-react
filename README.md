@@ -10,7 +10,7 @@ WIP
 ## Basic setup
 Wip...
 
-```react
+```tsx
 //...anywhere
 return(
   <>
