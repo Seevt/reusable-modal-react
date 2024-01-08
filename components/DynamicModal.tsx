@@ -17,7 +17,6 @@ function DynamicModal({
   children,
   styling,
   closeOnBg,
-  className,
   defaultPosition,
 }: Props) {
   const __modal_outer_background: CSSProperties = {
@@ -28,7 +27,7 @@ function DynamicModal({
     zIndex: 500,
 
     width: "100vw",
-    height: "100vh",
+    height: "100svh",
     background: "rgba(0, 0 ,0 , 0.2)",
 
     opacity: controller.show ? 1 : 0,
