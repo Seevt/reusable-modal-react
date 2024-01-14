@@ -12,7 +12,7 @@ type Props = {
   disableUnmount?: boolean;
 };
 
-function DynamicModal({
+function ReactModal({
   controller,
   portalTo,
   children,
@@ -77,4 +77,4 @@ function DynamicModal({
   );
 }
 
-export default DynamicModal;
+export default ReactModal;
