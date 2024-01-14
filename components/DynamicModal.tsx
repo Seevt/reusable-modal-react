@@ -42,6 +42,16 @@ function DynamicModal({
 
     ...styling,
   };
+  function closeOnBackground(e: MouseEvent<HTMLDivElement>): void {
+    e.stopPropagation();
+    if (e.target === e.currentTarget) {
+      controller.setShow((v) => {
+        v = false;
+        return v;
+      });
+    }
+  }
+
   useEffect(() => {
     return () => {
       if (disableUnmount) return;
@@ -53,9 +63,7 @@ function DynamicModal({
     <>
       {createPortal(
       <div
-        onClick={
-            closeOnBg ? (e) => controller.closeOnBackground(e) : () => null
-        }
+          onClick={closeOnBg ? (e) => closeOnBackground(e) : () => null}
         style={{
           ...__modal_outer_background,
         }}
