@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, useEffect, MouseEvent } from "react";
 import type { ModalController } from "../custom hooks/useModalController";
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
   closeOnBg?: boolean;
   defaultPosition?: boolean;
   styling?: CSSProperties;
+  disableUnmount?: boolean;
 };
 
 function DynamicModal({
@@ -18,6 +19,7 @@ function DynamicModal({
   styling,
   closeOnBg,
   defaultPosition,
+  disableUnmount,
 }: Props) {
   const __modal_outer_background: CSSProperties = {
     position: "fixed",
@@ -40,6 +42,12 @@ function DynamicModal({
 
     ...styling,
   };
+  useEffect(() => {
+    return () => {
+      if (disableUnmount) return;
+      controller.setShow(false);
+    };
+  }, []);
 
   return (
     <>
